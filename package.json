@@ -1,10 +1,11 @@
 {
-  "name": "discord.js-v14-example",
+  "name": "mw",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./bot_modules/bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bot_modules/bot.js",
+    "dev": "nodemon ./bot_modules/bot.js"
   },
   "type": "module",
   "keywords": [],
@@ -13,6 +14,8 @@
   "dependencies": {
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "nodemon": "^3.1.4",
+    "os": "^0.1.2"
   }
 }

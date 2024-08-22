@@ -1,3 +1,4 @@
+import * as utils from '../../../bot_modules/utils.js';
 import dotenv from 'dotenv';
 dotenv.config()
 
@@ -10,22 +11,23 @@ export default {
     async execute(interaction, client) {
         if (!interaction.isCommand()) return;
 
-        const { commandName } = interaction;
+        const {
+            commandName
+        } = interaction;
         const command = client.commands.get(commandName);
 
         if (!client.commands.has(commandName)) return;
 
         if (process.env.LOCKUP === "1" && interaction.user.id !== process.env.OWNER_ID) {
-            console.log(process.env.LOCKUP)
             return interaction.reply({
-                content: 'The Bot is currently in Development State, all commands have been locked.',
+                embeds: [utils.easyEmbed("#ff0000", "The bot is currently locked")],
                 ephemeral: true
             });
         }
 
         if (command.devOnly && interaction.user.id !== process.env.OWNER_ID) {
             return interaction.reply({
-                content: 'This command is locked for you.',
+                embeds: [utils.easyEmbed("#ff0000", "This command is currently inaccessible")],
                 ephemeral: true
             });
         }
@@ -39,11 +41,14 @@ export default {
 
                 const timeLeft = expirationTime - now;
 
-                const formattedTimeLeft = (timeLeft / 1000).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                const formattedTimeLeft = (timeLeft / 1000).toLocaleString(undefined, {
+                    minimumFractionDigits: 1,
+                    maximumFractionDigits: 1
+                });
 
                 if (now < expirationTime) {
                     return interaction.reply({
-                        content: `Please wait ${formattedTimeLeft} seconds before using the ${commandName} command again.`,
+                        embeds: [utils.easyEmbed("#ffff00", "Cooldown", `Please wait ${formattedTimeLeft}s before using this command again`)],
                         ephemeral: true
                     });
                 }
