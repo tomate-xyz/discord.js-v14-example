@@ -1,5 +1,5 @@
 {
-  "name": "mw",
+  "name": "discord.js-v14-example",
   "version": "1.0.0",
   "description": "",
   "main": "./bot_modules/bot.js",
@@ -16,6 +16,7 @@
     "dotenv": "^16.4.5",
     "fs": "0.0.1-security",
     "nodemon": "^3.1.4",
-    "os": "^0.1.2"
+    "os": "^0.1.2",
+    "path": "^0.12.7"
   }
 }
