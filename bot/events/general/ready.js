@@ -1,9 +1,7 @@
-import {
-  ActivityType
-} from "discord.js";
+import { ActivityType, Events } from "discord.js";
 
 export default {
-  name: "ready",
+  name: Events.ClientReady,
   once: true,
 
   execute(client) {
@@ -16,17 +14,19 @@ export default {
       // Small example of displaying a Custom Status with the uptime as content
 
       client.user.setPresence({
-        activities: [{
-          type: ActivityType.Custom,
-          name: "custom",
-          state: `🗣️ ${formattedUptime}`
-        }]
-      })
+        activities: [
+          {
+            type: ActivityType.Custom,
+            name: "custom",
+            state: `🗣️ ${formattedUptime}`,
+          },
+        ],
+      });
     }
 
     updatePresence();
-    setInterval(updatePresence, 30000)
-  }
+    setInterval(updatePresence, 30000);
+  },
 };
 
 function formatUptime(uptime) {
@@ -36,5 +36,5 @@ function formatUptime(uptime) {
   uptime %= 3600;
   const minutes = Math.floor(uptime / 60);
 
-  return `${days}d ${hours}h ${minutes}m`
+  return `${days}d ${hours}h ${minutes}m`;
 }
