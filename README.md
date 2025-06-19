@@ -1,6 +1,6 @@
 # Discord.js v14 Example
 
-An example Discord Bot written in JavaScript, utilizing a custom slash command and event handler with categories, using Discord.js @14.18.0
+An example Discord Bot written in JavaScript, utilizing a custom slash command and event handler with categories, using Discord.js @14.20.0
 
 ### ⚠️ Notice: This is made for a single Guild usecase! The commands will not be registered globally!
 
